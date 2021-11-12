@@ -17,4 +17,5 @@
     <string name="contextual_menu">Contextual menu</string>
     <string name="favorite">Favorite button</string>
     <string name="rating_example">8/10</string>
+    <string name="see_later">Ver despues</string>
 </resources>
