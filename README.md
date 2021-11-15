@@ -29,6 +29,7 @@ ENTRE OTRAS
 
 # Screenshots
 
+![Menú principal](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/menu_options.jpg)
 
 
 
