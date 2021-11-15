@@ -29,7 +29,27 @@ ENTRE OTRAS
 
 # Screenshots
 
+* Menú principal
 ![Menú principal](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/menu_options.jpg)
+
+* Peliculas principales
+![Peliculas principales](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/principal_movies.jpg)
+
+* Peliculas favoritas
+![Peliculas favoritas](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/favorites.jpg)
+  
+* Agregar a ver mas tarde
+  ![Agregar a ver mas tarde](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/add_to_see_later.jpg)
+  
+* Quitar de ver mas tarde
+  ![Quitar de ver mas tarde](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/remove_from_see_later.jpg)
+
+* Busqueda en tiempo real
+  ![Busqueda en tiempo real](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/realtime_search.jpg)
+
+
+* Detalle de pelicula
+  ![Detalle de pelicula](https://github.com/D3LE0N/Movie-app/blob/master/screenshots/details.jpg)
 
 
 
