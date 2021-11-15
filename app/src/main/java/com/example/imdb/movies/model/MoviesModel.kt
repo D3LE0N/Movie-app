@@ -15,6 +15,7 @@ class MoviesModel @Inject constructor(
 
     private var currentPage: Int = 1
     private var pagination: PaginationService? = null
+    private val quantityPerPage = 30
 
     override suspend fun getNextMoviePage(): List<Movie> {
 
@@ -32,7 +33,7 @@ class MoviesModel @Inject constructor(
                 return emptyList()
         }
 
-        val paginationService = network.getPage(currentPage) ?: return emptyList()
+        val paginationService = network.getPage(currentPage, quantityPerPage) ?: return emptyList()
 
         currentPage++
         pagination = paginationService

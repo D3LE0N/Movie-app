@@ -9,6 +9,7 @@ interface IRetrofitMovieService {
     suspend fun getPage(
         @Query("page") page: Int,
         @Query("api_key") apiKey: String,
-        @Query("year") year: Int
+        @Query("year") year: Int,
+        @Query("quantity") quantityPerPage: Int
     ): PaginationService
 }

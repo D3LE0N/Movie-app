@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -7,18 +8,38 @@
         <variable
             name="viewModel"
             type="com.example.imdb.movies.viewModel.MoviesViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".movies.ui.fragments.MovieListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:adapter="@{adapter}"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/movieProgressBar"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="2"
             tools:listitem="@layout/movie_item" />
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/movieProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:setProgressVisibility="@{viewModel.loading}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
