@@ -8,10 +8,6 @@
         <variable
             name="viewModel"
             type="com.example.imdb.movies.viewModel.MoviesViewModel" />
-
-        <variable
-            name="adapter"
-            type="com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter" />
     </data>
 
     <RelativeLayout
@@ -24,7 +20,7 @@
             android:id="@+id/movieList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adapter="@{adapter}"
+            android:adapter="@{viewModel.adapter}"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"

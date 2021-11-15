@@ -16,7 +16,6 @@ import com.example.imdb.R
 import com.example.imdb.databinding.FragmentMovieListBinding
 import com.example.imdb.movies.shared.Movie
 import com.example.imdb.movies.ui.fragments.adapter.IOnMovieClickListener
-import com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter
 import com.example.imdb.movies.viewModel.MoviesViewModel
 import com.example.imdb.shared.ImdbApplication
 import com.example.imdb.shared.getJson
@@ -41,7 +40,7 @@ class MovieListFragment : Fragment() {
             container,
             false
         )
-        val adapter = MovieListAdapter()
+        val adapter = viewModel.adapter
         adapter.addMovieClickListener(object : IOnMovieClickListener {
 
             override fun movieClicked(movie: Movie) {
@@ -57,8 +56,6 @@ class MovieListFragment : Fragment() {
         })
 
         binding.viewModel = viewModel
-        binding.adapter = adapter
-
         addPaginationListener(
             binding.movieList,
             binding.movieProgressBar,

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.imdb.movies.model.IMoviesModel
 import com.example.imdb.movies.shared.Movie
+import com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -16,6 +17,8 @@ class MoviesViewModel @Inject constructor(
     val loading = MutableLiveData(false)
 
     val movieList = MutableLiveData<List<Movie>>(mutableListOf())
+
+    val adapter = MovieListAdapter()
 
     suspend fun getNextPage() {
 
