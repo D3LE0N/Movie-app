@@ -7,6 +7,7 @@ import com.example.imdb.movies.model.repository.local.dagger.MovieLocalRepositor
 import com.example.imdb.movies.model.repository.local.dagger.MovieLocalRepositoryModule
 import com.example.imdb.movies.model.repository.network.dagger.MovieServiceBindModule
 import com.example.imdb.movies.model.repository.network.dagger.MovieServiceModule
+import com.example.imdb.movies.ui.fragments.MovieDetailsFragment
 import com.example.imdb.movies.ui.fragments.MovieListFragment
 import com.example.imdb.movies.viewModel.dagger.MoviesViewModelModule
 import dagger.BindsInstance
@@ -32,4 +33,6 @@ interface IApplicationComponent {
     }
 
     fun inject(movieFragment: MovieListFragment)
+
+    fun inject(movieDetailsFragment: MovieDetailsFragment)
 }

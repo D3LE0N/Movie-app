@@ -4,6 +4,7 @@ import com.example.imdb.movies.model.IMoviesModel
 import com.example.imdb.movies.viewModel.MoviesViewModel
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class MoviesViewModelModule {

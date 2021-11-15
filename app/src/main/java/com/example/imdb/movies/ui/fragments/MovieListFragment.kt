@@ -10,12 +10,16 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imdb.R
 import com.example.imdb.databinding.FragmentMovieListBinding
+import com.example.imdb.movies.shared.Movie
+import com.example.imdb.movies.ui.fragments.adapter.IOnMovieClickListener
 import com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter
 import com.example.imdb.movies.viewModel.MoviesViewModel
 import com.example.imdb.shared.ImdbApplication
+import com.example.imdb.shared.getJson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,10 +28,6 @@ class MovieListFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: MoviesViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +42,16 @@ class MovieListFragment : Fragment() {
             false
         )
         val adapter = MovieListAdapter()
+        adapter.addMovieClickListener(object : IOnMovieClickListener {
+
+            override fun movieClicked(movie: Movie) {
+                val json = movie.getJson()
+                val actionMovie =
+                    MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(json)
+                findNavController().navigate(actionMovie)
+            }
+        })
+
         viewModel.movieList.observe(viewLifecycleOwner, {
             adapter.addMovies(it)
         })

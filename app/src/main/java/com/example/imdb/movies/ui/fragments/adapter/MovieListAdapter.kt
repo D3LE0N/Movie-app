@@ -13,6 +13,7 @@ class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
     RecyclerView.Adapter<MovieListAdapter.ViewHolder>(), IOnMovieClickListener {
 
     private val items = movies.toMutableList()
+    private var listener: IOnMovieClickListener? = null
 
     class ViewHolder(val view: MovieItemBinding) : RecyclerView.ViewHolder(view.root) {
 
@@ -20,6 +21,10 @@ class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
             view.setVariable(BR.movie, value)
             view.executePendingBindings()
         }
+    }
+
+    fun addMovieClickListener(listener: IOnMovieClickListener) {
+        this.listener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,7 +49,8 @@ class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
     override fun getItemCount(): Int = items.size
 
     override fun movieClicked(movie: Movie) {
-        //Set internal movie clicked
+
+        listener?.movieClicked(movie)
     }
 
     fun addMovies(movies: List<Movie>?) {
