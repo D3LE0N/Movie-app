@@ -20,12 +20,20 @@ class MoviesModel @Inject constructor(
     override suspend fun getNextMoviePage(): List<Movie> {
 
         var moviePage = cache.getMoviePage(currentPage)
-        if (!moviePage.isNullOrEmpty())
+        if (!moviePage.isNullOrEmpty()) {
+            currentPage++
             return moviePage
+        }
+
 
         moviePage = local.getMoviePage(currentPage)
-        if (!moviePage.isNullOrEmpty())
+        if (!moviePage.isNullOrEmpty()) {
+
+            cache.saveMovieList(currentPage, moviePage)
+            currentPage++
             return moviePage
+        }
+
 
         pagination?.let {
 
@@ -35,6 +43,8 @@ class MoviesModel @Inject constructor(
 
         val paginationService = network.getPage(currentPage, quantityPerPage) ?: return emptyList()
 
+        cache.saveMovieList(currentPage, paginationService.results)
+        local.saveMovieList(currentPage, paginationService.results)
         currentPage++
         pagination = paginationService
         return paginationService.results
