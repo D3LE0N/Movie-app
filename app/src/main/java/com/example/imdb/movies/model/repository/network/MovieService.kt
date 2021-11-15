@@ -20,4 +20,16 @@ class MovieService @Inject constructor(private val service: IRetrofitMovieServic
 
         return null
     }
+
+    override suspend fun search(query: String, page: Int): PaginationService?{
+        try {
+
+            return service.search(BuildConfig.API_KEY, page, 2021, query)
+
+        } catch (e: Exception) {
+            Log.e("error to fetch movies", e.message ?: "No catch error en message")
+        }
+
+        return null
+    }
 }

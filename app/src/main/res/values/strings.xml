@@ -20,4 +20,5 @@
     <string name="see_later">Ver despues</string>
     <string name="movies">Peliculas</string>
     <string name="details">Detalle</string>
+    <string name="search_movie">Busca una peli</string>
 </resources>

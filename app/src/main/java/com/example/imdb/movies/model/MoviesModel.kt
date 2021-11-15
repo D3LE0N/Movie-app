@@ -39,4 +39,9 @@ class MoviesModel @Inject constructor(
         pagination = paginationService
         return paginationService.results
     }
+
+    override suspend fun search(query: String): List<Movie> {
+
+        return network.search(query, 1)?.results ?: emptyList()
+    }
 }

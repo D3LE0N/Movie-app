@@ -12,4 +12,12 @@ interface IRetrofitMovieService {
         @Query("year") year: Int,
         @Query("quantity") quantityPerPage: Int
     ): PaginationService
+
+    @GET("search/movie")
+    suspend fun search(
+        @Query("api_key") apiKey: String,
+        @Query("page") page: Int,
+        @Query("year") year: Int,
+        @Query("query", encoded = true) query: String
+    ): PaginationService
 }

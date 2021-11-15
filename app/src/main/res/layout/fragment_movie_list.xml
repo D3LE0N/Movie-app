@@ -20,7 +20,9 @@
             android:id="@+id/movieSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/standard_margin"/>
+            android:queryHint="@string/search_movie"
+            android:iconifiedByDefault="false"
+            android:layout_margin="@dimen/standard_margin" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieList"
