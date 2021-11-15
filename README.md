@@ -4,7 +4,7 @@
 
 Desarrolar un app movil para servir las diferentes peliculas estrenadas en el año 2021
 
-# Técnologias a utilizar
+# Tecnologías a utilizar
 
 1) MVVM
 2) DAGGER2
@@ -18,5 +18,14 @@ Desarrolar un app movil para servir las diferentes peliculas estrenadas en el a�
 
 ENTRE OTRAS
 
+# Notas
+
+Es necesario tener instalada la última versión de android studio
+
+* solo estará disponible una semana este repositorio.
+
 # Screenshots
+
+
+
 
