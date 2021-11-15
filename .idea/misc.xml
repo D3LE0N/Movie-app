@@ -13,6 +13,7 @@
         <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/fragment_home.xml" value="0.11503623188405797" />
         <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/fragment_movie_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/fragment_movie_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/fragment_see_later_movies.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/fragment_slideshow.xml" value="0.11503623188405797" />
         <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/movie_item.xml" value="0.21" />
         <entry key="..\:/Users/romeo/AndroidStudioProjects/IMDB/app/src/main/res/layout/movie_search_item.xml" value="0.20416666666666666" />
@@ -27,5 +28,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.20416666666666666" />
+      </ProjectState>
+    </option>
   </component>
 </project>

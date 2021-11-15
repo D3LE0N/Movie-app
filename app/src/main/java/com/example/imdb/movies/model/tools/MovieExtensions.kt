@@ -14,7 +14,8 @@ fun MovieEntity.toMovie(): Movie {
         movie.releaseDate,
         movie.voteAverage,
         movie.backdrop,
-        movie.favorite
+        movie.favorite,
+        movie.seeLater
     )
 }
 
@@ -29,7 +30,8 @@ fun Movie.toMovieEntity(): MovieEntity {
         movie.releaseDate,
         movie.voteAverage,
         movie.backdrop,
-        movie.favorite
+        movie.favorite,
+        movie.seeLater
     )
 }
 
@@ -40,7 +42,7 @@ fun List<Movie>?.toMovieEntityList(): List<MovieEntity> {
 
     list?.let {
 
-        for (item in list){
+        for (item in list) {
             result.add(item.toMovieEntity())
         }
     }
@@ -55,7 +57,7 @@ fun List<MovieEntity>?.toMovieList(): List<Movie> {
 
     list?.let {
 
-        for (item in list){
+        for (item in list) {
             result.add(item.toMovie())
         }
     }

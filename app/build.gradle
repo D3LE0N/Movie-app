@@ -63,6 +63,7 @@ dependencies {
     implementation "androidx.room:room-paging:2.4.0-beta01"
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:4.1.0'
 
     //retrofit and coroutines
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

@@ -9,6 +9,7 @@ import com.example.imdb.movies.model.repository.network.dagger.MovieServiceBindM
 import com.example.imdb.movies.model.repository.network.dagger.MovieServiceModule
 import com.example.imdb.movies.ui.fragments.MovieDetailsFragment
 import com.example.imdb.movies.ui.fragments.MovieListFragment
+import com.example.imdb.movies.ui.fragments.SeeLaterMoviesFragment
 import com.example.imdb.movies.viewModel.dagger.MoviesViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -35,4 +36,6 @@ interface IApplicationComponent {
     fun inject(movieFragment: MovieListFragment)
 
     fun inject(movieDetailsFragment: MovieDetailsFragment)
+
+    fun inject(seeLaterMoviesFragment: SeeLaterMoviesFragment)
 }

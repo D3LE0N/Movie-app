@@ -2,6 +2,7 @@ package com.example.imdb.movies.ui.fragments.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -51,7 +52,7 @@ class MovieSearchResultAdapter(movies: List<Movie> = mutableListOf()) :
         return items.size
     }
 
-    override fun movieClicked(movie: Movie) {
+    override fun movieClicked(movie: Movie, view: View?) {
         listener?.movieClicked(movie)
     }
 

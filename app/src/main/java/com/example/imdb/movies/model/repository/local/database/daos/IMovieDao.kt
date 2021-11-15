@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
+import androidx.room.Update
 import com.example.imdb.movies.model.repository.local.database.entities.MovieEntity
 
 @Dao
@@ -20,4 +21,10 @@ interface IMovieDao {
 
     @Insert(onConflict = REPLACE)
     fun insertMovies(movieEntity: List<MovieEntity>)
+
+    @Update
+    fun addMovieToSeeLaterList(movie: MovieEntity)
+
+    @Query("SELECT * FROM movie WHERE seeLater = 1")
+    fun getSeeLaterMovies(): List<MovieEntity>?
 }

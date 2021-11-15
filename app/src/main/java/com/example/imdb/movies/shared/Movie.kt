@@ -18,5 +18,6 @@ data class Movie(
     var voteAverage: Double,
     @SerializedName("backdrop_path")
     var backdrop: String?,
-    var favorite: Boolean = true
+    var favorite: Boolean = false,
+    var seeLater: Boolean = false
 )

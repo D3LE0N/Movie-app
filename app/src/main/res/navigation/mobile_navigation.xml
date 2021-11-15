@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/movieListFragment">
+    app:startDestination="@+id/nav_movies">
 
 
     <fragment
-        android:id="@+id/movieListFragment"
+        android:id="@+id/nav_movies"
         android:name="com.example.imdb.movies.ui.fragments.MovieListFragment"
         android:label="@string/movies">
         <action
@@ -21,8 +21,16 @@
         tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="movieJson"
-            app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_see_later"
+        android:name="com.example.imdb.movies.ui.fragments.SeeLaterMoviesFragment"
+        android:label="@string/to_see_later">
+        <action
+            android:id="@+id/action_seeLaterMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 
 </navigation>

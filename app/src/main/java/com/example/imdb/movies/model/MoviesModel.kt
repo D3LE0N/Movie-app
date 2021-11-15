@@ -55,4 +55,12 @@ class MoviesModel @Inject constructor(
 
         return network.search(query, 1)?.results ?: emptyList()
     }
+
+    override suspend fun getSeeLaterMovies(): List<Movie> {
+        return local.getMoviesToSeeLater()
+    }
+
+    override suspend fun updateMovie(movie: Movie) {
+        local.updateMovie(movie)
+    }
 }

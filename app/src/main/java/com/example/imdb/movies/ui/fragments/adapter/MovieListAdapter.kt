@@ -10,10 +10,12 @@ import com.example.imdb.databinding.MovieItemBinding
 import com.example.imdb.movies.shared.Movie
 
 class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
-    RecyclerView.Adapter<MovieListAdapter.ViewHolder>(), IOnMovieClickListener {
+    RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
     private val items = movies.toMutableList()
     private var listener: IOnMovieClickListener? = null
+    private var favoriteClickedListener: IOnMovieClickListener? = null
+    private var menuClickedListener: IOnMovieClickListener? = null
 
     class ViewHolder(val view: MovieItemBinding) : RecyclerView.ViewHolder(view.root) {
 
@@ -25,6 +27,14 @@ class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
 
     fun addMovieClickListener(listener: IOnMovieClickListener) {
         this.listener = listener
+    }
+
+    fun addFavoriteClickListener(listener: IOnMovieClickListener) {
+        this.favoriteClickedListener = listener
+    }
+
+    fun addMenuClickListener(listener: IOnMovieClickListener) {
+        this.menuClickedListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,15 +53,12 @@ class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
 
         val value = items[position]
         holder.bind(value)
-        holder.view.onClickMovie = this
+        holder.view.onClickMovie = listener
+        holder.view.onFavoriteClicked = favoriteClickedListener
+        holder.view.onMenuClicked = menuClickedListener
     }
 
     override fun getItemCount(): Int = items.size
-
-    override fun movieClicked(movie: Movie) {
-
-        listener?.movieClicked(movie)
-    }
 
     fun addMovies(movies: List<Movie>?) {
 
@@ -61,5 +68,15 @@ class MovieListAdapter(movies: List<Movie> = mutableListOf()) :
             items.addAll(movies)
             notifyItemRangeChanged(startIndex, startIndex + movies.size)
         }
+    }
+
+    fun updatedMovie(movie: Movie) {
+        notifyItemChanged(items.indexOf(movie))
+    }
+
+    fun removeMovie(movie: Movie) {
+        val index = items.indexOf(movie)
+        items.removeAt(index)
+        notifyItemRemoved(index)
     }
 }

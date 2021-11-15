@@ -3,6 +3,7 @@ package com.example.imdb.movies.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.imdb.movies.model.IMoviesModel
+import com.example.imdb.movies.shared.Movie
 import com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter
 import com.example.imdb.movies.ui.fragments.adapter.MovieSearchResultAdapter
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +51,23 @@ class MoviesViewModel @Inject constructor(
         val page = model.search(query)
         withContext(Dispatchers.Main) {
             searchResultAdapter.replaceMovies(page)
+        }
+    }
+
+    suspend fun addToSeeLater(movie: Movie) {
+
+        movie.seeLater = true
+        model.updateMovie(movie)
+        withContext(Dispatchers.Main) {
+            adapter.updatedMovie(movie)
+        }
+    }
+
+    suspend fun removeFromToSeeLater(movie: Movie) {
+        movie.seeLater = false
+        model.updateMovie(movie)
+        withContext(Dispatchers.Main) {
+            adapter.updatedMovie(movie)
         }
     }
 }

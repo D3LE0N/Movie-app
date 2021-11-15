@@ -21,6 +21,7 @@ import com.example.imdb.movies.ui.fragments.adapter.IOnMovieClickListener
 import com.example.imdb.movies.viewModel.MoviesViewModel
 import com.example.imdb.shared.ImdbApplication
 import com.example.imdb.shared.getJson
+import com.github.zawadz88.materialpopupmenu.popupMenu
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -52,7 +53,9 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
             viewModel
         )
 
-        requestPagination(viewModel)
+        if (viewModel.adapter.itemCount == 0){
+            requestPagination(viewModel)
+        }
         return binding.root
     }
 
@@ -65,7 +68,7 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         val adapter = viewModel.adapter
         adapter.addMovieClickListener(object : IOnMovieClickListener {
 
-            override fun movieClicked(movie: Movie) {
+            override fun movieClicked(movie: Movie, view: View?) {
                 val json = movie.getJson()
                 val actionMovie =
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(json)
@@ -76,7 +79,7 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         val searchAdapter = viewModel.searchResultAdapter
         searchAdapter.addMovieClickListener(object : IOnMovieClickListener {
 
-            override fun movieClicked(movie: Movie) {
+            override fun movieClicked(movie: Movie, view: View?) {
                 val json = movie.getJson()
                 val actionMovie =
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(json)
@@ -97,6 +100,40 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         viewModel.loading.observe(owner, {
 
             binding.movieProgressBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+        adapter.addFavoriteClickListener(object : IOnMovieClickListener {
+            override fun movieClicked(movie: Movie, view: View?) {
+
+            }
+        })
+
+        adapter.addMenuClickListener(object : IOnMovieClickListener {
+            override fun movieClicked(movie: Movie, view: View?) {
+
+                val menu = popupMenu {
+                    section {
+                        item {
+                            label = if (movie.seeLater) getString(R.string.remove_from_see_later)
+                            else getString(R.string.add_from_see_later)
+                            callback = {
+
+                                if (!movie.seeLater) {
+                                    viewModel.viewModelScope.launch(Dispatchers.IO) {
+                                        viewModel.addToSeeLater(movie)
+                                    }
+                                } else {
+                                    viewModel.viewModelScope.launch(Dispatchers.IO) {
+                                        viewModel.removeFromToSeeLater(movie)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                menu.show(requireContext(), view!!)
+            }
         })
     }
 

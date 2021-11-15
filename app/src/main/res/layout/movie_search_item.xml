@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()-> onClickMovie.movieClicked(movie)}"
+        android:onClick="@{(view)-> onClickMovie.movieClicked(movie, view)}"
         android:padding="@dimen/standard_margin">
 
         <TextView
