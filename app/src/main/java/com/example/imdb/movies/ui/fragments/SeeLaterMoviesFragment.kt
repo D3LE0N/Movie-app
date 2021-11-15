@@ -13,6 +13,7 @@ import com.example.imdb.R
 import com.example.imdb.databinding.FragmentSeeLaterMoviesBinding
 import com.example.imdb.movies.shared.Movie
 import com.example.imdb.movies.ui.fragments.adapter.IOnMovieClickListener
+import com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter
 import com.example.imdb.movies.viewModel.MoviesSeeLaterViewModel
 import com.example.imdb.shared.ImdbApplication
 import com.example.imdb.shared.getJson
@@ -48,6 +49,15 @@ class SeeLaterMoviesFragment : Fragment() {
 
         val adapter = viewModel.adapter
 
+        addListeners(adapter, viewModel)
+
+        return binding.root
+    }
+
+    private fun addListeners(
+        adapter: MovieListAdapter,
+        viewModel: MoviesSeeLaterViewModel
+    ) {
         adapter.addMovieClickListener(object : IOnMovieClickListener {
 
             override fun movieClicked(movie: Movie, view: View?) {
@@ -83,7 +93,13 @@ class SeeLaterMoviesFragment : Fragment() {
             }
         })
 
-        return binding.root
+        adapter.addFavoriteClickListener(object : IOnMovieClickListener {
+            override fun movieClicked(movie: Movie, view: View?) {
+                viewModel.viewModelScope.launch(Dispatchers.IO) {
+                    viewModel.addOrRemoveFromFavorites(movie)
+                }
+            }
+        })
     }
 
     override fun onAttach(context: Context) {

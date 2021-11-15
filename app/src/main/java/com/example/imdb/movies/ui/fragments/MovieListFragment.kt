@@ -53,7 +53,7 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
             viewModel
         )
 
-        if (viewModel.adapter.itemCount == 0){
+        if (viewModel.adapter.itemCount == 0) {
             requestPagination(viewModel)
         }
         return binding.root
@@ -105,6 +105,9 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
         adapter.addFavoriteClickListener(object : IOnMovieClickListener {
             override fun movieClicked(movie: Movie, view: View?) {
 
+                viewModel.viewModelScope.launch(Dispatchers.IO) {
+                    viewModel.addOrRemoveFromFavorites(movie)
+                }
             }
         })
 
@@ -118,15 +121,14 @@ class MovieListFragment : Fragment(), SearchView.OnQueryTextListener {
                             else getString(R.string.add_from_see_later)
                             callback = {
 
-                                if (!movie.seeLater) {
-                                    viewModel.viewModelScope.launch(Dispatchers.IO) {
+                                viewModel.viewModelScope.launch(Dispatchers.IO) {
+                                    if (!movie.seeLater) {
                                         viewModel.addToSeeLater(movie)
-                                    }
-                                } else {
-                                    viewModel.viewModelScope.launch(Dispatchers.IO) {
+                                    } else {
                                         viewModel.removeFromToSeeLater(movie)
                                     }
                                 }
+
                             }
                         }
                     }

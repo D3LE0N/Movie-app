@@ -29,4 +29,31 @@ class MoviesSeeLaterViewModel @Inject constructor(private val model: IMoviesMode
             adapter.removeMovie(movie)
         }
     }
+
+    suspend fun addToFavorites(movie: Movie) {
+
+        movie.favorite = true
+        model.updateMovie(movie)
+        withContext(Dispatchers.Main) {
+            adapter.updatedMovie(movie)
+        }
+    }
+
+    suspend fun removeFromFavorites(movie: Movie) {
+
+        movie.favorite = false
+        model.updateMovie(movie)
+        withContext(Dispatchers.Main) {
+            adapter.updatedMovie(movie)
+        }
+    }
+
+    suspend fun addOrRemoveFromFavorites(movie: Movie) {
+
+        if (movie.favorite) {
+            removeFromFavorites(movie)
+        } else {
+            addToFavorites(movie)
+        }
+    }
 }
