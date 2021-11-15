@@ -34,11 +34,11 @@ fun isFavorite(image: ImageView, favorite: Boolean) {
 fun setMoviePoster(image: ImageView, imagePath: String) {
 
     val poster = "${BuildConfig.API_PHOTOS}$imagePath"
-    Glide.with(image)
+    GlideApp.with(image)
         .load(poster)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
-        .placeholder(R.drawable.cover)
         .skipMemoryCache(false)
+        .centerCrop()
         .into(image)
 }
 

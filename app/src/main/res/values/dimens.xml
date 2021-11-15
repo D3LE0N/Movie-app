@@ -9,4 +9,5 @@
     <dimen name="height_rating">32dp</dimen>
     <dimen name="card_elevation">6dp</dimen>
     <dimen name="card_radius">8dp</dimen>
+    <dimen name="poster_height">264dp</dimen>
 </resources>

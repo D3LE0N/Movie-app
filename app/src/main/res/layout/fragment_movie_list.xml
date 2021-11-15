@@ -14,7 +14,7 @@
             type="com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -27,19 +27,17 @@
             android:adapter="@{adapter}"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/movieProgressBar"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:spanCount="2"
-            tools:listitem="@layout/movie_item" />
+            tools:listitem="@layout/movie_item"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/movieProgressBar"/>
 
         <ProgressBar
             android:id="@+id/movieProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             app:setProgressVisibility="@{viewModel.loading}" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>
