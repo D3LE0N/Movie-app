@@ -18,4 +18,6 @@
     <string name="favorite">Favorite button</string>
     <string name="rating_example">8/10</string>
     <string name="see_later">Ver despues</string>
+    <string name="movies">Peliculas</string>
+    <string name="details">Detalle</string>
 </resources>

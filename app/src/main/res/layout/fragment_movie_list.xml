@@ -16,6 +16,12 @@
         android:orientation="vertical"
         tools:context=".movies.ui.fragments.MovieListFragment">
 
+        <SearchView
+            android:id="@+id/movieSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standard_margin"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieList"
             android:layout_width="match_parent"
@@ -24,8 +30,9 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_below="@+id/movieSearchView"
             tools:listitem="@layout/movie_item"
-            android:layout_alignParentTop="true"
             android:layout_above="@+id/movieProgressBar"/>
 
         <ProgressBar

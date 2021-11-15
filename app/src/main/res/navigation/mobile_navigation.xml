@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.example.imdb.movies.ui.fragments.MovieListFragment"
-        android:label="MovieListFragment">
+        android:label="@string/movies">
         <action
             android:id="@+id/action_movieListFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.imdb.movies.ui.fragments.MovieDetailsFragment"
-        android:label="fragment_movie_details"
+        android:label="@string/details"
         tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="movieJson"
