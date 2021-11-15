@@ -43,11 +43,12 @@ class MoviesModel @Inject constructor(
 
         val paginationService = network.getPage(currentPage, quantityPerPage) ?: return emptyList()
 
-        cache.saveMovieList(currentPage, paginationService.results)
-        local.saveMovieList(currentPage, paginationService.results)
+        val movies = paginationService.results
+        cache.saveMovieList(currentPage, movies)
+        local.saveMovieList(currentPage, movies)
         currentPage++
         pagination = paginationService
-        return paginationService.results
+        return movies
     }
 
     override suspend fun search(query: String): List<Movie> {
