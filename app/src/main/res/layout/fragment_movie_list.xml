@@ -20,22 +20,35 @@
             android:id="@+id/movieSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="@string/search_movie"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginBottom="@dimen/standard_margin"
             android:iconifiedByDefault="false"
-            android:layout_margin="@dimen/standard_margin" />
+            android:queryHint="@string/search_movie" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/movieProgressBar"
+            android:layout_below="@+id/movieSearchView"
+            android:layout_marginTop="@dimen/standard_margin"
             android:adapter="@{viewModel.adapter}"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
-            android:layout_marginTop="@dimen/standard_margin"
-            android:layout_below="@+id/movieSearchView"
-            tools:listitem="@layout/movie_item"
-            android:layout_above="@+id/movieProgressBar"/>
+            tools:listitem="@layout/movie_item" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movieSearchList"
+            android:layout_below="@id/movieSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{viewModel.searchResultAdapter}"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/movie_search_item" />
 
         <ProgressBar
             android:id="@+id/movieProgressBar"
@@ -43,6 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            app:setProgressVisibility="@{viewModel.loading}" />
+            app:setVisibility="@{viewModel.loading}" />
     </RelativeLayout>
 </layout>

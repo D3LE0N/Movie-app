@@ -31,7 +31,7 @@ fun isFavorite(image: ImageView, favorite: Boolean) {
 }
 
 @BindingAdapter("setMoviePoster")
-fun setMoviePoster(image: ImageView, imagePath: String) {
+fun setMoviePoster(image: ImageView, imagePath: String?) {
 
     val poster = "${BuildConfig.API_PHOTOS}$imagePath"
     GlideApp.with(image)
@@ -49,4 +49,22 @@ fun setProgressVisibility(progress: ProgressBar, visibility: Boolean) {
         progress.visibility = View.VISIBLE
     else
         progress.visibility = View.GONE
+}
+
+@BindingAdapter("setVisibility")
+fun setVisibility(view: View, visible: Boolean) {
+
+    if (visible)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
+}
+
+@BindingAdapter("setNegativeVisibility")
+fun setNegativeVisibility(view: View, visible: Boolean) {
+
+    if (!visible)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
 }

@@ -3,8 +3,8 @@ package com.example.imdb.movies.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.imdb.movies.model.IMoviesModel
-import com.example.imdb.movies.shared.Movie
 import com.example.imdb.movies.ui.fragments.adapter.MovieListAdapter
+import com.example.imdb.movies.ui.fragments.adapter.MovieSearchResultAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -15,10 +15,10 @@ class MoviesViewModel @Inject constructor(
 
 
     val loading = MutableLiveData(false)
-
-    val movieList = MutableLiveData<List<Movie>>(mutableListOf())
-
     val adapter = MovieListAdapter()
+    val searchResultAdapter = MovieSearchResultAdapter()
+    val searchVisible = MutableLiveData(false)
+    private var searching: Boolean = false
 
     suspend fun getNextPage() {
 
@@ -30,8 +30,26 @@ class MoviesViewModel @Inject constructor(
 
         withContext(Dispatchers.Main) {
             loading.value = false
-            movieList.value = moviePage
+            adapter.addMovies(moviePage)
+
         }
 
+    }
+
+    suspend fun search(query: String) {
+
+        if (searchVisible.value?.not() == true) {
+            withContext(Dispatchers.Main) {
+                searchVisible.value = true
+            }
+        }
+
+        if (searching)
+            return
+
+        val page = model.search(query)
+        withContext(Dispatchers.Main) {
+            searchResultAdapter.replaceMovies(page)
+        }
     }
 }
