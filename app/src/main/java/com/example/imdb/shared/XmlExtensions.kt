@@ -20,7 +20,7 @@ fun setDouble(textView: TextView, number: Double) {
 fun isFavorite(image: ImageView, favorite: Boolean) {
 
     val resource = if (favorite) {
-        R.drawable.ic_baseline_favorite_24
+        R.drawable.ic_baseline_favorite_red_24
     } else {
         R.drawable.ic_baseline_favorite_disabled_24
     }

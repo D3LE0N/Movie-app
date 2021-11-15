@@ -51,4 +51,13 @@ class MoviesLocalRepository @Inject constructor(
 
         return seeLaterMovies?.toMovieList() ?: emptyList()
     }
+
+    override fun getFavoritesMovies(): List<Movie> {
+
+        val favorites = database
+            .movieEntityDao()
+            .getFavorites()
+
+        return favorites?.toMovieList() ?: emptyList()
+    }
 }

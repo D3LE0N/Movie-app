@@ -56,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|end"
                     android:textColor="@color/white"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:setDouble="@{viewModel.movie.voteAverage}" />
@@ -67,6 +68,7 @@
                     android:background="@drawable/button_ripple_effect"
                     android:contentDescription="@string/favorite"
                     android:src="@drawable/ic_baseline_favorite_disabled_24"
+                    android:visibility="invisible"
                     app:isFavorite="@{viewModel.movie.favorite}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/moreButton" />
@@ -78,21 +80,81 @@
                     android:background="@drawable/button_ripple_effect"
                     android:contentDescription="@string/contextual_menu"
                     android:src="@drawable/ic_baseline_more_vert_24"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <LinearLayout
+            android:id="@+id/votes_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moviePosterContainer">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin"
+                android:layout_weight="1"
+                android:padding="@dimen/standard_margin"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:gravity="center_horizontal"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@{viewModel.movie.releaseDate}" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/card_radius"
+                android:padding="@dimen/standard_margin"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:gravity="center_horizontal"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:setDouble="@{viewModel.movie.voteAverage}" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/movieOverview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/movie_detail_top_text"
+            android:layout_margin="@dimen/movie_detail_top_text"
             android:text="@{viewModel.movie.overview}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moviePosterContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/votes_container" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

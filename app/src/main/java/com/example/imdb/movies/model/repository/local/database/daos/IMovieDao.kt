@@ -27,4 +27,7 @@ interface IMovieDao {
 
     @Query("SELECT * FROM movie WHERE seeLater = 1")
     fun getSeeLaterMovies(): List<MovieEntity>?
+
+    @Query("SELECT * FROM movie where favorite = 1")
+    fun getFavorites(): List<MovieEntity>?
 }

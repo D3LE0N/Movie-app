@@ -7,6 +7,7 @@ import com.example.imdb.movies.model.repository.local.dagger.MovieLocalRepositor
 import com.example.imdb.movies.model.repository.local.dagger.MovieLocalRepositoryModule
 import com.example.imdb.movies.model.repository.network.dagger.MovieServiceBindModule
 import com.example.imdb.movies.model.repository.network.dagger.MovieServiceModule
+import com.example.imdb.movies.ui.fragments.FavoriteListFragment
 import com.example.imdb.movies.ui.fragments.MovieDetailsFragment
 import com.example.imdb.movies.ui.fragments.MovieListFragment
 import com.example.imdb.movies.ui.fragments.SeeLaterMoviesFragment
@@ -38,4 +39,6 @@ interface IApplicationComponent {
     fun inject(movieDetailsFragment: MovieDetailsFragment)
 
     fun inject(seeLaterMoviesFragment: SeeLaterMoviesFragment)
+
+    fun inject(favoriteListFragment: FavoriteListFragment)
 }

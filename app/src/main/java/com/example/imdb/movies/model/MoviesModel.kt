@@ -63,4 +63,8 @@ class MoviesModel @Inject constructor(
     override suspend fun updateMovie(movie: Movie) {
         local.updateMovie(movie)
     }
+
+    override suspend fun getFavoritesMovies(): List<Movie> {
+        return local.getFavoritesMovies()
+    }
 }

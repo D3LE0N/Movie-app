@@ -24,4 +24,6 @@
     <string name="to_see_later">Para ver después</string>
     <string name="remove_from_see_later">Quitar de la lista de ver mas tarde</string>
     <string name="add_from_see_later">ver mas tarde</string>
+    <string name="my_favorites">Mis pelis favoritas</string>
+    <string name="favorites">Favoritas</string>
 </resources>

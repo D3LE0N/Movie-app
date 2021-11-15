@@ -11,4 +11,6 @@ interface IMoviesModel {
     suspend fun getSeeLaterMovies(): List<Movie>
 
     suspend fun updateMovie(movie: Movie)
+
+    suspend fun getFavoritesMovies(): List<Movie>
 }

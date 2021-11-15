@@ -8,4 +8,6 @@ interface IMoviesLocalRepository : IMovieRepositoryCommon {
     fun updateMovie(movie: Movie)
 
     fun getMoviesToSeeLater(): List<Movie>
+
+    fun getFavoritesMovies(): List<Movie>
 }

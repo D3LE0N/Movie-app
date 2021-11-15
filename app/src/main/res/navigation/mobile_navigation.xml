@@ -32,5 +32,13 @@
             android:id="@+id/action_seeLaterMoviesFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.imdb.movies.ui.fragments.FavoriteListFragment"
+        android:label="@string/my_favorites" >
+        <action
+            android:id="@+id/action_favoriteListFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
 
 </navigation>
