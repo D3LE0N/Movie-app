@@ -2,7 +2,10 @@
 
 # Objetivos
 
-Desarrolar un app movil para servir las diferentes peliculas estrenadas en el año 2021
+La aplicación debe permitir a los usuarios ver una lista de películas con información básica. El
+usuario deberá poder ordenar la lista, realizar búsquedas y ver los detalles de cada película.
+Además, el usuario podrá marcar películas como favoritas y ver todas esas películas favoritas
+en una lista separada. Además, el usuario podrá hacer una lista de “ver después”.
 
 # Tecnologías a utilizar
 
@@ -20,7 +23,7 @@ ENTRE OTRAS
 
 # Notas
 
-Es necesario tener instalada la última versión de android studio
+* Es necesario tener instalada la última versión de android studio
 
 * solo estará disponible una semana este repositorio.
 
