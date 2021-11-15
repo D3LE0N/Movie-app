@@ -12,5 +12,6 @@ data class MovieEntity(
     val releaseDate: String?,
     val voteAverage: Double,
     val backdrop: String?,
-    val favorite: Boolean
+    val favorite: Boolean,
+    val seeLater: Boolean
 )
