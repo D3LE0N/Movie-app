@@ -6,6 +6,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.imdb.BuildConfig
 import com.example.imdb.R
 
@@ -35,6 +36,9 @@ fun setMoviePoster(image: ImageView, imagePath: String) {
     val poster = "${BuildConfig.API_PHOTOS}$imagePath"
     Glide.with(image)
         .load(poster)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .placeholder(R.drawable.cover)
+        .skipMemoryCache(false)
         .into(image)
 }
 
