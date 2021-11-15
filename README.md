@@ -18,6 +18,10 @@ en una lista separada. Además, el usuario podrá hacer una lista de “ver desp
 7) PATRON REPOSITORIO
 8) CONSTRAINT LAYAOUT
 9) RETROFIT
+10) Kotlin
+11) DataBinding
+12) Kotlin Extensions
+13) BindingAdapters
 
 ENTRE OTRAS
 
